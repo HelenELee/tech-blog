@@ -1,0 +1,18 @@
+<!-- Loop over each object in the projects array -->
+{{#each blogs as |blog| }}
+<div class="blog-post">
+  <div class="blog-header flex-row flex-no-wrap align-content-stretch justify-space-between">
+        <p class="display-flex blog-title">
+            <a href="/api/blogs/{{blog.id}}">{{blog.title}}</a>
+        </p>
+        <p class="display-flex">Posted by {{blog.user.name}} on {{format_date blog.date_created}}</p>    
+  </div>
+  <div class="blog-contents">
+      <p>
+      {{blog.contents}}
+      </p>
+  </div>
+
+</div>
+  
+{{/each}}

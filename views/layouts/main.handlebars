@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Blog</title>
+  <link rel="stylesheet" href="/css/jass.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!--Add Google Fonts-->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+  
+</head>
+
+<body>
+  <div class="main-content flex-column">
+    <header>
+        <nav > 
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/">Dashboard</a></li>
+            <li>
+              <!-- Conditionally render login or logout links -->
+              {{#if logged_in}}
+              <button class="no-button" id="logout">logout</button>
+              {{else}}
+              <a href="/login">Login</a>
+              {{/if}} 
+
+            </li>
+          </ul>
+          <div class="header-title">Tech-Blog</div>  
+        
+        </nav>
+    </header>
+    <main class="mt-5">
+      <!-- Render the sub layout -->
+      <section class="blog-container">
+         {{{ body }}}
+      </section>
+     
+    </main>
+    <footer>
+      
+    </footer>
+  </div>
+
+  <!-- Render script for logged in users only -->
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+</body>
+
+</html>

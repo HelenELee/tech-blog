@@ -1,0 +1,26 @@
+<div class="text-center">
+  <div class="container">
+
+    <span class="blog-title"><h2>{{blog.title}}</h2></span>
+  
+    <p>{{blog.contents}}</p>
+    <p>Created by {{user.name}} on {{format_date blog.date_created}}</p>
+  </div> 
+</div>
+
+<form class="form new-comment">
+    <div class="text-center">
+        <div class="container">
+            <span class="blog-title"><h2>Comment</h2></span>
+            <div class="form-group">
+                <label for="comment">Comment:</label>
+                <input class="form-input" type="text" id="comment" name="comment" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div> 
+    </div>
+</form>
+
+<script src="./../js/comment.js"></script>
