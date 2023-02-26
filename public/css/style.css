@@ -1,0 +1,153 @@
+:root {
+    --space-grey: #A9A9A9;
+    --white: white;
+    --brown:#231010;
+    --green:#D9EAD3;
+    --black: #000000;
+  }
+
+  body {
+    /*font-family: Arial, sans-serif;*/
+    font-family: 'Roboto Condensed', sans-serif;
+    margin: 0px;
+    line-height: 1.5;
+    width: 100%;  
+    font-weight: 400;
+    font-size: 1.75rem;
+    min-height: 100vh;
+    background-color: var(--brown);
+  }
+
+  .main-content{
+    margin: auto;
+    width:80%;
+  }
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+  h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--green);
+  }
+   
+  h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+
+  h3 {
+    font-size: 2rem;
+    font-weight: 400;
+  }
+
+nav>ul {
+  list-style-type: none;
+}
+
+nav>ul>li {
+  display: inline;
+  color: var(--green);
+  text-align: center;
+  padding: 16px;
+  
+}
+nav>ul>li>a {
+  color: var(--green);
+  margin-top: 16px;
+  text-decoration: none;
+}
+
+.header-title {
+  background-color: var(--green);
+  border: 10px;
+  color: var(--brown);
+  width: 30%;
+  border: solid 1px var(--space-grey);
+  box-shadow: 10px 10px 2px var(--space-grey);
+  border-radius: 15px;
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+}
+headerx, .project:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+}
+
+header { 
+  background-color: var(--brown);
+  color: var(--green);  
+  height: 150px;
+}
+
+.blog-container {
+  margin: auto;
+  background-color: var(--green);
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  width:100%;
+  border:5 solid #000000;
+}
+
+.blog-header {
+  padding: 10px;
+  height:fit-content
+}
+
+.blog-post {
+  background-color: var(--brown);
+  color: var(--space-grey);
+  width:90%;
+  margin:auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.blog-title .blog-title>a {
+  align-self: start;
+  color: var(--space-grey);
+  text-decoration: none;
+}
+
+.blog-title>a {
+  text-decoration: none;
+  color: var(--space-grey);
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.blog-contents {
+  background-color: var(--green);
+  color: var(--black);
+  border: solid 5px var(--brown);
+  margin: 0px;
+  padding:5px;
+}
+
+.no-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #1b89bc;
+  text-decoration: none;
+  font-size: 100%;
+}
+
+.no-button:hover {
+  color: #065b83;
+  text-decoration: underline;
+}
+
+.dollar-amount {
+  color: #056605;
+  font-weight: bold;
+  margin-left: -5px;
+}
