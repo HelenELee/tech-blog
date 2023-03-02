@@ -1,13 +1,13 @@
-<div class="header-title">Tech-Blog</div> 
+<!-- Loop over each object in the projects array -->
+<div class="header-title">Dashboard</div> 
 <section class="blog-container">
 
 
-<!-- Loop over each object in the projects array -->
 {{#each blogs as |blog| }}
 <div class="blog-post">
   <div class="blog-header flex-row flex-no-wrap align-content-stretch justify-space-between">
         <p class="display-flex blog-title">
-            <a href="/api/blogs/{{blog.id}}">{{blog.title}}</a>
+            <a href="/updatedelete/{{blog.id}}">{{blog.title}}</a>
         </p>
         <p class="display-flex">Posted by {{blog.user.name}} on {{format_date blog.date_created}}</p>    
   </div>
@@ -20,4 +20,9 @@
 </div>
   
 {{/each}}
+<div class="col-md-4">
+        <button id="new-post" class="btn btn-lg btn-standard">+ New Post</button>
+</div>
+
 </section>
+<script src="/js/blog.js"></script>
