@@ -17,7 +17,7 @@ const updateHandler = async (event) => {
       });
   
       if (response.ok) {
-        // If successful, redirect the browser to the profile page
+        // If successful, redirect the browser to the dashboard page
         document.location.replace('/dashboard');
       } else {
         alert(response.statusText);
@@ -40,7 +40,7 @@ const updateHandler = async (event) => {
     });
   
     if (response.ok) {
-        // If successful, redirect the browser to the profile page
+        // If successful, redirect the browser to the dashbard page
         document.location.replace('/dashboard');
     } else {
         alert(response.statusText);

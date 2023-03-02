@@ -1,12 +1,12 @@
 const router = require('express').Router();
-const { Blog } = require('../../models');
+const { Blog, User} = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/', async (req, res) => {
   try {
     const newBlog = await Blog.create({
       ...req.body,
-      /*user_id: req.session.user_id,*/
+      user_id: req.session.user_id,
     });
 
    /* const blog = newBlog.map((blog) => blog.get({ plain: true }));*/
@@ -17,6 +17,7 @@ router.post('/', async (req, res) => {
   }
 });
 
+/*
 // GET all blogs
 router.get('/', async (req, res) => {
   try {
@@ -26,18 +27,93 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+*/
 
-// get one blog
-router.get('/:id', async (req, res) => {
+// GET all blogs
+router.get('/currentuserzz', withAuth, async (req, res) => {
   try {
-    const blogData = await Blog.findByPk(req.params.id, {
-    /*  include: [
+    let blogs = {};
+   // console.log("SESSION ID = " + req.session.user_id);
+    // Get all projects and JOIN with user data
+    const blogData = await Blog.findAll({
+      //TODO - want to just include blogs for logged in user
+      /*where: { "user_id": req.session.user_id },*/
+      include: [
         {
           model: User,
           attributes: ['name'],
         },
       ],
+      
+      
+    }
+    );
+    console.log("BLOGDATA = " + blogData);
+    if (blogData.length > 1){
+      // Serialize data so the template can read it
+      blogs = blogData.map((blog) => blog.get({ plain: true }));
+    } else {
+      blogs = blogData.get({ plain: true });
+    }
+    
+
+    // Pass serialized data and session flag into template
+    res.render('dashboard', { 
+      blogs, 
+      logged_in: req.session.logged_in 
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+router.get('/currentuserxx', async (req, res) => {
+  try {
+    console.log("Currentuser route");
+    //console.log("session id = " + req.session.id);
+    const blogData = await Blog.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ]},
+      /*{where: { "user_id": "1" },
+    } */
+  );
+
+  console.log(blogData);
+
+  // Serialize data so the template can read it
+  const blogs = blogData.map((blog) => blog.get({ plain: true }));
+
+  res.render('homepage', { 
+    blogs, 
+    logged_in: req.session.logged_in 
+  });
+
+  
+    //res.status(200).json(blogData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+// get one blog
+router.get('/:id', withAuth, async (req, res) => {
+  try {
+    const blogData = await Blog.findByPk(req.params.id, {
+      /*
+      include: [
+        {
+          model: Comment,
+          attributes: ['contents', 'date_created', 'user_id', 'blog_id'],
+        },
+      ],
       */
+      
     });
     console.log("blogData - " + blogData);
     /*
@@ -48,9 +124,7 @@ router.get('/:id', async (req, res) => {
       return;
     }*/
 
-    
     // Serialize data so the template can read it
-    //const blog = blogData.map((blg) => blg.get({ plain: true }));
 
     const blog = blogData.get({ plain: true });
 
