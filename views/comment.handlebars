@@ -1,26 +1,40 @@
-<div class="text-center">
-  <div class="container">
+<div class="header-title">Tech-Blog</div> 
+<section class="blog-container">
 
-    <span class="blog-title"><h2>{{blog.title}}</h2></span>
-  
-    <p>{{blog.contents}}</p>
-    <p>Created by {{user.name}} on {{format_date blog.date_created}}</p>
-  </div> 
+<div class="blog-post">
+  <div class="blog-header flex-row flex-no-wrap align-content-stretch justify-space-between">
+        <p class="display-flex blog-title">
+            <a href="/api/blogs/{{blog.id}}">{{blog.title}}</a>
+        </p>
+        <p class="display-flex">Posted by {{blog.user.name}} on {{format_date blog.date_created}}</p>    
+  </div>
+  <div class="blog-contents">
+      <p>
+      {{blog.contents}}
+      </p>
+  </div>
+
 </div>
-
 <form class="form new-comment">
-    <div class="text-center">
-        <div class="container">
-            <!--<span class="blog-title"><h2>Comment</h2></span>-->
-            <div class="form-group">
-                <label for="comment">Comment:</label>
-                <textarea class="form-input" type="text" id="comment" name="comment"></textarea>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </div> 
+<div class="blog-post">
+  <div class="blog-header flex-row flex-no-wrap align-content-stretch justify-space-between">
+        <p class="display-flex blog-title">
+            Comment
+        </p>
+        <p class="display-flex">Posted by {{blog.user.name}} on {{format_date blog.date_created}}</p>    
+  </div>
+  <div class="blog-contents">
+      <div class="form-group">
+            <textarea class="form-input w-100" type="text" id="comment" name="comment"></textarea>
+    </div>        
+  </div>
+ 
+</div>
+ <div class="text-center">
+    <button type="submit" class="btn btn-primary text-center">Submit</button>
     </div>
 </form>
 
+
+</section>
 <script src="/js/comment.js"></script>

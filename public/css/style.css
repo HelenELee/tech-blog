@@ -63,6 +63,25 @@ nav>ul>li>a {
   text-decoration: none;
 }
 
+.button-link {
+  background-color: var(--brown);
+  color: var(--green);
+  margin-top: 16px;
+  text-decoration: none;
+  border:0px;
+}
+
+.button-link:hover, a:hover {
+  /*color: #065b83;*/
+  color: #FBC21C;
+  text-decoration: underline;
+}
+
+ax:hover {
+  color: #065b83;
+  text-decoration: underline;
+}
+
 .header-title {
   background-color: var(--green);
   border: 10px;
@@ -74,6 +93,7 @@ nav>ul>li>a {
   font-size: 3rem;
   font-weight: 700;
   text-align: center;
+  margin-bottom: 30px;
 }
 headerx, .project:not(:last-child) {
   border-bottom: 1px solid #ccc;
@@ -82,7 +102,7 @@ headerx, .project:not(:last-child) {
 header { 
   background-color: var(--brown);
   color: var(--green);  
-  height: 150px;
+  height: 30px;
 }
 
 .blog-container {
@@ -151,3 +171,9 @@ header {
   font-weight: bold;
   margin-left: -5px;
 }
+
+.btn.btn-standard {
+  background-color:var(--brown);
+  color: var(--space-grey);
+}
+

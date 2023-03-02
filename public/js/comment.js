@@ -1,6 +1,6 @@
 const commentFormHandler = async (event) => {
     event.preventDefault();
-  
+  //alert("commentFormHandler");
     // Collect values from the login form
     //const email = document.querySelector('#email-login').value.trim();
     const contents = document.querySelector('#comment').value.trim();
@@ -17,7 +17,7 @@ const commentFormHandler = async (event) => {
         method: 'POST',
         body: JSON.stringify({ contents, 
                "user_id": "1",
-                "blog_id": "3"}),
+                "blog_id": "1"}),
         headers: { 'Content-Type': 'application/json' },
       });
   

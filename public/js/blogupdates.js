@@ -27,7 +27,7 @@ const updateHandler = async (event) => {
 
   const deleteHandler = async (event) => {
     event.preventDefault();
-  alert("DELETE!!")
+  
     // Collect values from the login form
     const blog_id = document.querySelector('#blog-id').value.trim();
   
