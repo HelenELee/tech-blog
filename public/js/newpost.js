@@ -1,13 +1,14 @@
+//handle creating new blog post
 const postFormHandler = async (event) => {
     event.preventDefault();
   
-    // Collect values from the login form
+    // Collect values from the blog form
     const title = document.querySelector('#blog-title').value.trim();
     const contents = document.querySelector('#blog-contents').value.trim();
-    //alert(req.session.user_id);
+    //check data entered in form
     if (title && contents) {
       // Send a POST request to the API endpoint
-      //TO DO Get actual user_id
+      
       const response = await fetch('/api/blogs', {
         method: 'POST',
         body: JSON.stringify({ title, contents}),
@@ -19,10 +20,19 @@ const postFormHandler = async (event) => {
         document.location.replace('/dashboard');
       } else {
         alert(response.statusText);
+        
       }
+    } else {
+      //no data entered in form, tell user - validation
+      document.querySelector('#dialog').classList.remove("hidden");
+        
+        $( function() {
+          $( "#dialog" ).dialog();
+        } );
     }
   };
 
+  //add event listeners
   document
   .querySelector('#post-blog')
   .addEventListener('click', postFormHandler);

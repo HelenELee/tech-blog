@@ -72,14 +72,10 @@ nav>ul>li>a {
 }
 
 .button-link:hover, a:hover {
-  /*color: #065b83;*/
   color: #FBC21C;
   text-decoration: underline;
-}
-
-ax:hover {
-  color: #065b83;
-  text-decoration: underline;
+  background-color: var(--brown);
+  cursor: pointer;
 }
 
 .header-title {
@@ -94,9 +90,6 @@ ax:hover {
   font-weight: 700;
   text-align: center;
   margin-bottom: 30px;
-}
-headerx, .project:not(:last-child) {
-  border-bottom: 1px solid #ccc;
 }
 
 header { 
@@ -118,7 +111,7 @@ header {
 
 .blog-header {
   padding: 10px;
-  height:fit-content
+  /*height:fit-content;*/
 }
 
 .blog-post {
@@ -166,14 +159,19 @@ header {
   text-decoration: underline;
 }
 
-.dollar-amount {
-  color: #056605;
-  font-weight: bold;
-  margin-left: -5px;
-}
-
 .btn.btn-standard {
   background-color:var(--brown);
   color: var(--space-grey);
 }
 
+.btn.btn-standard:hover {
+  color: #FBC21C;
+  text-decoration: underline;
+  background-color: var(--brown);
+  cursor: pointer;
+}
+
+.hidden{
+  visibility: hidden;
+  display: none;
+}

@@ -1,20 +1,14 @@
+//called when new comment is submitted
 const commentFormHandler = async (event) => {
     event.preventDefault();
-  //alert("commentFormHandler");
-    // Collect values from the login form
-    //const email = document.querySelector('#email-login').value.trim();
+  
+    // Collect values from the comment form
+    
     const contents = document.querySelector('#comment').value.trim();
     const blog_id = document.querySelector('#blog-id').value.trim();
-    console.log(contents);
+    
     if (contents) {
-      // Send a POST request to the API endpoint
-      console.log("posting comment");
-
-      console.log(JSON.stringify({ contents, blog_id
-        /*"user_id": "1",*/
-        /* "blog_id": "3"*/
-      }),
-         )
+      // Send a POST request to the API endpoint to create comment
 
       const response = await fetch('/api/comments', {
         method: 'POST',
@@ -24,14 +18,20 @@ const commentFormHandler = async (event) => {
   
       if (response.ok) {
         // If successful, redirect the browser to the home page
-        //document.location.replace('/api/blogs/3');
         document.location.replace('/');
       } else {
         alert(response.statusText);
       }
+    } else {
+      //if nothing entered in form inform user - validation
+      document.querySelector('#dialog').classList.remove("hidden");
+       $( function() {
+             $( "#dialog" ).dialog();
+       } );
     }
   };
 
+  //added listener to button
   document
   .querySelector('.new-comment')
   .addEventListener('submit', commentFormHandler);

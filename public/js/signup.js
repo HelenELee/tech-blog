@@ -1,34 +1,11 @@
-const loginFormHandler = async (event) => {
-  event.preventDefault();
-
-  // Collect values from the login form
-  const name = document.querySelector('#name-login').value.trim();
-  const password = document.querySelector('#password-login').value.trim();
-
-  if (email && password) {
-    // Send a POST request to the API endpoint
-    const response = await fetch('/api/users/login', {
-      method: 'POST',
-      body: JSON.stringify({ email, password }),
-      headers: { 'Content-Type': 'application/json' },
-    });
-
-    if (response.ok) {
-      // If successful, redirect the browser to the profile page
-      document.location.replace('/');
-    } else {
-      alert(response.statusText);
-    }
-  }
-};
-
+//Handle sign up of user
 const signupFormHandler = async (event) => {
   event.preventDefault();
-
+  //get details from form
   const name = document.querySelector('#name-signup').value.trim();
-  //const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
-
+  //check details were added
+  //post to endpoint and create new user
   if (name && password) {
     const response = await fetch('/api/users', {
       method: 'POST',
@@ -41,22 +18,23 @@ const signupFormHandler = async (event) => {
     } else {
       alert(response.statusText);
     }
+  } else {
+    //no data entered in form, tell user - validation
+      document.querySelector('#dialog').classList.remove("hidden");
+      
+      $( function() {
+        $( "#dialog" ).dialog();
+      } );
   }
 };
 
 const signupGetFormHandler = async (event) => {
   event.preventDefault();
-  alert("signup");
   document.location.replace('/signup');
     
 };
 
-if(document.querySelector('.login-form')) {
-  document
-  .querySelector('.login-form')
-  .addEventListener('submit', loginFormHandler);
-}
-
+//add event listeners
 
 if(document.querySelector('.signup-form')) {
     document
