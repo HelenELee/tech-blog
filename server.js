@@ -1,10 +1,11 @@
+//get access to all packages and routes and helpers
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
-
+//connection between sequelize and mysql
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
@@ -13,7 +14,7 @@ const PORT = process.env.PORT || 3001;
 
 // Set up Handlebars.js engine with custom helpers
 const hbs = exphbs.create({ helpers });
-
+//session details such as expiry etc
 const sess = {
   secret: 'Super secret secret',
   cookie: {

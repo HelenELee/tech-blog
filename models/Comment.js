@@ -1,3 +1,4 @@
+//sequelize details for Comment
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
@@ -13,6 +14,10 @@ Comment.init(
     },
     contents: {
       type: DataTypes.STRING,
+    },
+    user_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     date_created: {
       type: DataTypes.DATE,

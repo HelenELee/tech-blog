@@ -1,0 +1,17 @@
+[
+    {
+      "id": "1",
+      "name": "Ethan Lee",
+      "password": "opendoor"
+    },
+    {
+        "id": "2",
+        "name": "Joshua Lee",
+        "password": "opendoor"
+    },
+   {
+        "id": "3",
+        "name": "Harry Lee",
+        "password": "opendoor"
+    }
+]

@@ -2,14 +2,16 @@ const router = require('express').Router();
 const { Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+//post one comment
+//called from public/js/customElements.js
 router.post('/', async (req, res) => {
   try {
+    //include all data from request plus session data
     const newComment = await Comment.create({
       ...req.body,
       user_id: req.session.user_id,
+      user_name: req.session.user_name,
     });
-
-    //const comment = newComment.map((comment) => comment.get({ plain: true }));
     
     res.status(200).json(newComment);
   } catch (err) {
@@ -18,6 +20,7 @@ router.post('/', async (req, res) => {
 });
 
 // GET all comments
+//used for testing
 router.get('/', async (req, res) => {
   try {
     const commentData = await Comment.findAll();
@@ -28,6 +31,7 @@ router.get('/', async (req, res) => {
 });
 
 // get one comment
+//used for testing
 router.get('/:id', async (req, res) => {
   try {
     const commentData = await Comment.findByPk(req.params.id);
@@ -43,6 +47,8 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+//used for testing
+//update one comment
 router.put('/:id', async(req, res) => {
   try {
     const commentData = await Comment.update({
@@ -60,6 +66,8 @@ router.put('/:id', async(req, res) => {
   }
 });
 
+//delete one comment
+//used for testing
 router.delete('/:id', async (req, res) => {
   try {
     const commentData = await Comment.destroy({

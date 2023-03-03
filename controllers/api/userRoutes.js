@@ -1,6 +1,9 @@
 const router = require('express').Router();
+const bcrypt = require('bcrypt');
 const { User } = require('../../models');
 
+//create new user
+//used in public/js/signup.js
 router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
@@ -17,8 +20,11 @@ router.post('/', async (req, res) => {
   }
 });
 
+//do login
+//used in public/js/login.js
 router.post('/login', async (req, res) => {
   try {
+    //check a user exists
     const userData = await User.findOne({ where: { name: req.body.name } });
 
     if (!userData) {
@@ -27,7 +33,8 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
-
+    //check password is valid, compare against encrypted version
+    //use helper function model/User
     const validPassword = await userData.checkPassword(req.body.password);
 
     if (!validPassword) {
@@ -36,7 +43,7 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
-
+    //write details to session, used throughout application
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
@@ -50,6 +57,8 @@ router.post('/login', async (req, res) => {
   }
 });
 
+//do logout
+//used in public/js/logout.js
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {

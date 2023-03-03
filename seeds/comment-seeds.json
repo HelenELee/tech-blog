@@ -1,0 +1,30 @@
+[
+    {
+        "contents" : "Great article!", 
+        "user_id" : "2",
+        "blog_id" : "2",
+        "user_name": "Joshua Lee"
+
+    },
+    {
+        "contents" : "Yeah I agree!", 
+        "user_id" : "1",
+        "blog_id" : "2",
+        "user_name": "Ethan Lee"
+
+    },
+    {
+        "contents" : "Thanks for explaining!", 
+        "user_id" : "2",
+        "blog_id" : "1",
+        "user_name":"Joshua Lee"
+
+    },
+    {
+        "contents" : "Great, I agree!", 
+        "user_id" : "3",
+        "blog_id" : "4",
+        "user_name":"Harry Lee"
+
+    }
+]

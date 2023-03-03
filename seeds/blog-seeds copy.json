@@ -1,0 +1,23 @@
+[
+    {
+      "title": "Learning Node.js",
+      "contents": "Node.js is a cross-platform, open-source server environment that can run on Windows, Linux, Unix, macOS, and more. ",
+      "user_id" :"1"
+    },
+    {
+        "title": "Why do I love Javascript?",
+        "contents": "I love javascript because it is easier, it is almost everywhere, a single language for everything, it is present and future of web, it is simple",
+        "user_id" :"1"
+    },
+    {
+        "title": "Why use Sequelize?",
+        "contents": "Sequelize is a powerful library in Javascript that makes it easy to manage a SQL database. Sequelize can layer over different protocols, but here we'll use PostgreSQL. At its core, Sequelize is an Object-Relational Mapper – meaning that it maps an object syntax onto our database schemas.",
+        "user_id" :"2"
+      },
+      {
+        "title": "Why use Handlebars",
+        "contents": "Handlebars. js and HTML5 are primarily classified as 'Templating Languages & Extensions' and 'Languages' tools respectively. 'Simple' is the primary reason why developers consider Handlebars. js over the competitors, whereas 'New doctype' was stated as the key factor in picking HTML5.",
+        "user_id" :"3"
+      }     
+
+]

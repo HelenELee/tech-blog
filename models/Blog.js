@@ -1,3 +1,4 @@
+//setup Model for sequelize  mysql data as objects
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
@@ -16,7 +17,7 @@ Blog.init(
       allowNull: false,
     },
     contents: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     date_created: {
       type: DataTypes.DATE,

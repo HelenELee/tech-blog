@@ -1,3 +1,5 @@
+//set up associations between objects
+
 const User = require('./User');
 const Comment = require('./Comment');
 const Blog = require('./Blog');

@@ -1,5 +1,7 @@
+//routes that render to browser
+
 const router = require('express').Router();
-const { Blog, User } = require('../models');
+const { Blog, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -28,39 +30,27 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET all blogs
+// GET all blogs for dashboard
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     let blogs = {};
-   // console.log("SESSION ID = " + req.session.user_id);
-    // Get all projects and JOIN with user data
-    console.log(req.session.user_id);
+   
+    // Get all projects 
+    
     const blogData = await Blog.findAll({
-      //TODO - want to just include blogs for logged in user
       where: { user_id: req.session.user_id},
       /*attributes : {include: [
         {
           model: User,
           attributes: ['name'],
-        },
-      ],
-    }*/
-      
-    }
-    );
-    console.log("BLOGDATA = " + blogData);
-   
-    //if (blogData && blogData.length > 1){
-      // Serialize data so the template can read it
-      console.log("here");
+        }
+      ]},
+      */
+    });
+
+   // Serialize data so the template can read it    
       blogs = blogData.map((blog) => blog.get({ plain: true }));
-  // } else if (blogData != "") {
-  //    console.log("now here");
-  //    blogs = blogData.get({ plain: true });
-  //  }
-    
-    console.log("OPENING DASHBARD");
-    // Pass serialized data and session flag into template
+  
     res.render('dashboard', { 
       blogs, 
       logged_in: req.session.logged_in 
@@ -82,35 +72,24 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/signup', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
+  // direct user to sign up form
     res.render('signup');
   
 });
-
+//direct user to form for new blog post
 router.get('/newblog', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  /*
-  if (req.session.logged_in) {
-    res.render('newblog');
-    return;
-  }
-  */
 
   res.render('newblog');
 });
-
+//direct user to form for updating or deleting a post
 router.get('/updatedelete/:id', withAuth, async (req, res) => {
   try {
     const blogData = await Blog.findByPk(req.params.id, {
       
     });
-    console.log("blogData - " + blogData);
 
     // Serialize data so the template can read it
-
     const blog = blogData.get({ plain: true });
-
-    console.log(blog);
 
     // Pass serialized data and session flag into template
     res.render('updatedelete', { 
@@ -119,40 +98,28 @@ router.get('/updatedelete/:id', withAuth, async (req, res) => {
      user_id : req.session.id
     });
     
-
-    //res.status(200).json(blogData);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-
-/*
-router.get('/updatedelete/:id', withAuth, async(req, res) => {
-  console.log('update delete!!');
-  console.log(req.query.ID);
-
-  const response = await fetch('/api/blog/'+ req.query.ID, {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
-  });
-
-  if (response.ok) {
-    console.log(response.json());
-    const blog = blogData.get({ plain: true });
-    //alert(response);
-  } else {
-    alert('Failed to get data.');
-  }
-})
-*/
-// get one blog
-router.get('/:id', withAuth, async (req, res) => {
+// get one blog, called from home page when you click on a blog post
+//opens screen with blog and comments and option to post new comment
+//joins Blog with User and Comment to pull data from all 3
+router.get('/blog/:id', withAuth, async (req, res) => {
   try {
     const blogData = await Blog.findByPk(req.params.id, {
-      
+      include: [
+        { model: Comment },
+        {
+          model: User,
+          attributes: ['name'],
+        }
+      ],
     });
-    
+
+    // Serialize data so the template can read it
+
     const blog = blogData.get({ plain: true });
 
     // Pass serialized data and session flag into template
@@ -162,12 +129,8 @@ router.get('/:id', withAuth, async (req, res) => {
      user_id : req.session.id
     });
     
-
-    //res.status(200).json(blogData);
   } catch (err) {
     res.status(500).json(err);
   }
 });
-
-
 module.exports = router;
