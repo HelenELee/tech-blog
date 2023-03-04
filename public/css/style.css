@@ -78,6 +78,14 @@ nav>ul>li>a {
   cursor: pointer;
 }
 
+.link-highlight:hover {
+  color: #FBC21C;
+  text-decoration: underline;
+  background-color: var(--brown);
+  cursor: pointer;
+}
+
+
 .header-title {
   background-color: var(--green);
   border: 10px;
