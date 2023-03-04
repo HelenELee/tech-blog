@@ -1,5 +1,7 @@
 <div class="header-title">Tech-Blog</div> 
+ {{#if blogs.length}}
 <section class="blog-container">
+ 
       <!-- Loop over each object in the blog array -->
       {{#each blogs as |blog| }}
       <div class="blog-post">
@@ -19,4 +21,6 @@
       </div>
         
       {{/each}}
+  
 </section>
+{{/if}}
