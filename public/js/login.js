@@ -18,7 +18,12 @@ const loginFormHandler = async (event) => {
       // If successful, redirect the browser to the profile page
       document.location.replace('/');
     } else {
-      alert(response.statusText);
+      //alert(response.statusText);
+      document.querySelector('#dialog').classList.remove("hidden");
+   
+        $( function() {
+          $( "#dialog" ).dialog();
+        } );
     }
   } else {
     //if no values entered in form, inform user - validation
