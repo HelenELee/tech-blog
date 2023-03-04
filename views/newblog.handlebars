@@ -1,28 +1,36 @@
 <!--new blog form -->
 <div class="header-title">Your Dashboard</div> 
-<section class="blog-container">
-
-      <div class="text-center">
-        <div class="container">
-          <span class="blog-title"><h2>{{blog.title}}</h2></span>
-          <p>{{blog.contents}}</p>
-          <form class="form">
-            <div class="form-group">
-              <label for="blog-title">Title:</label>
-              <input class="form-input" type="text" id="blog-title" />
-            </div>
-            <div class="form-group">
-              <label for="blog-contents">Contents:</label>
-              <textarea class="form-input" type="text" id="blog-contents"></textarea>
-            </div>
-            <div class="form-group">
-              <button class="btn btn-standard" type="submit" id="post-blog">Create</button>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div id="dialog" title="Validation" class="hidden">
-          <p>Please enter the title and contents.</p>
-        </div>
+<section class="blog-container text-center">
+    <div class="blog-post">
+      <div class="blog-header flex-row flex-no-wrap align-content-stretch justify-space-between">
+                <p class="display-flex blog-title">
+                    New Post
+                </p>
+      </div>  
+      <div class="blog-contents">
+                <div class="container"> 
+                  <span class="blog-title"><h2>{{blog.title}}</h2></span>
+                  <p>{{blog.contents}}</p>
+                  <form class="form">
+                    <div class="form-group">
+                      <label for="blog-title">Title:</label>
+                      <input class="form-input" type="text" id="blog-title" />
+                    </div>
+                    <div class="form-group">
+                      <label for="blog-contents">Contents:</label>
+                      <textarea class="form-input" type="text" id="blog-contents"></textarea>
+                    </div>
+                    
+                  </form>
+                </div> 
+                <div class="form-group">
+                      <button class="btn btn-standard" type="submit" id="post-blog">Create</button>
+                </div>
+      </div>   
+    </div>
+          
+    <div id="dialog" title="Validation" class="hidden">
+        <p>Please enter the title and contents.</p>
+    </div>
 </section>
 <script src="/js/newpost.js"></script>
