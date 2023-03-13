@@ -86,6 +86,10 @@ To create a new Blog post select the "New Post" option at the end of the "Dashbo
 
 When you are finished, click "Logout" to logout.
 
+To view the deployed application click on the link below:
+
+[Tech-Blog](https://tech-blog-helen-lee.herokuapp.com/)
+
 
   ## License
   This project is covered by the "The MIT License" license.
